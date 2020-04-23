@@ -59,7 +59,7 @@ ProcessResult Editor::ProcessKeyEvent(const KeyEvent& key_event) {
   }
   if (char_handler_ &&
       !key_event.ctrl() && !key_event.alt() &&
-      ch > 0x20 && ch < 0x7f) {
+      ch >= 0x20 && ch < 0x7f) {
     DLOG(INFO) << "input char: '" << (char)ch << "', " << ch
                << ", '" << key_event.repr() << "'";
     return RIME_THIS_CALL(char_handler_)(ctx, ch);
@@ -174,7 +174,7 @@ ProcessResult Editor::AddToInput(Context* ctx, int ch) {
 }
 
 FluidEditor::FluidEditor(const Ticket& ticket) : Editor(ticket, false) {
-  Bind({XK_space, 0}, &Editor::Confirm);
+//  Bind({XK_space, 0}, &Editor::Confirm_lo);
   Bind({XK_BackSpace, 0}, &Editor::BackToPreviousInput);  //
   Bind({XK_BackSpace, kControlMask}, &Editor::BackToPreviousSyllable);
   Bind({XK_Return, 0}, &Editor::CommitComposition);  //
