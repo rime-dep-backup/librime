@@ -174,7 +174,7 @@ ProcessResult Editor::AddToInput(Context* ctx, int ch) {
 }
 
 FluidEditor::FluidEditor(const Ticket& ticket) : Editor(ticket, false) {
-//  Bind({XK_space, 0}, &Editor::Confirm_lo);
+//  Bind({XK_space, 0}, &Editor::Confirm);
   Bind({XK_BackSpace, 0}, &Editor::BackToPreviousInput);  //
   Bind({XK_BackSpace, kControlMask}, &Editor::BackToPreviousSyllable);
   Bind({XK_Return, 0}, &Editor::CommitComposition);  //
